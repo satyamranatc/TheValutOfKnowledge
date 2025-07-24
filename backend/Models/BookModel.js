@@ -29,6 +29,10 @@ let BookSchema = new mongoose.Schema(
       enum: ["Fiction", "Non-Fiction", "Self-Help", "Technology", "Horror"],
       required: true,
     },
+
+    BookPdfLink: {
+      type: "String",
+    },
   },
   {
     timestamps: true,

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Books.css';
+import {useNavigate} from "react-router-dom"
 
 export default function Books() {
+  let navigate = useNavigate();
   const [booksData, setBooksData] = useState([]);
 
   useEffect(() => {
@@ -26,14 +28,14 @@ export default function Books() {
 
       <div className="books-grid">
         {booksData.map((book) => (
-          <div className="book-card" key={book._id}>
+          <div  className="book-card" key={book._id}>
             <img src={book.BookPoster} alt={book.BookName} />
             <div className="book-info">
               <h2>{book.BookName}</h2>
               <h4>{book.BookAuthor}</h4>
               <p className="desc">{book.BookDesc}</p>
               <p className="price">₹ {book.BookPrice}</p>
-              <button>Read Now</button>
+              <button onClick={()=>navigate(`/bookDetails/${book._id}`)} >Read Now</button>
             </div>
           </div>
         ))}
